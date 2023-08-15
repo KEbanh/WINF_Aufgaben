@@ -1,0 +1,26 @@
+<!-- präsentiert von kostenlose-javascripts.de -->
+<script type='text/javascript'>
+<!--
+function doCollatz( i ) {
+
+	document.write("Bitte Zahl eingeben:<br />");
+	document.write("<input type='text' id='collatzValue' size='5' value='34' /><br /><input type='button' onclick=\"doCollatz(document.getElementById('collatzValue').value);\" value='Berechnen' />");
+
+	document.write(i+"<br />");
+	while(i != 1)
+	{
+	if( i % 2 == 0 )
+		i = i/2;
+	else
+		i = i*3+1;
+	document.write(i+"<br />");
+	}
+}
+
+//-->
+</script>
+<br />
+Collatz Funktion
+<br />
+<script type="text/javascript">initCollatz();</script>
+<!-- präsentiert von kostenlose-javascripts.de -->
