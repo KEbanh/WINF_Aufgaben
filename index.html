@@ -1,0 +1,65 @@
+<html><head>
+		<title>Erlösrechner</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>
+			"use strict";
+			function programm() {
+			// Quellcode
+
+			var vAnzahl;
+			var vAusgabe;
+			var vX;
+			var vY;
+			var vKV;
+			var vKF;
+			var vPreis;
+			var vE, vG;
+			parseFloat(vX);
+			parseFloat(vY);
+			parseFloat(vG);
+			parseFloat(vE);
+			vX = 1000;
+
+			vAnzahl = parseFloat(document.getElementById("idAnzahl").value);
+			vPreis = parseFloat(document.getElementById("idPreis").value);
+			vKV=parseFloat(document.getElementById("idKV").value);
+			vKF=parseFloat(document.getElementById("idKF").value);
+
+			vAusgabe = "";
+			vAusgabe = vAusgabe + "<table border=1>";
+			vAusgabe = vAusgabe + "<tr><th>Menge</th><th>Kosten K(x) = k<sub>F</sub> + k<sub>v</sub> * x </th><th>Erlöse E (x) = p * × </td><th>Gewinn G(x) = E(x) - K(x)</th><th>Bemerkung</th></tr>";
+
+			while (vX <=vAnzahl) {
+				vY = vKV*vX + vKF ;
+				vE = vX* vPreis;
+				vG = vE-vY;
+                if (vG<0){
+				vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td style=color:red>" + vG.toFixed(2) + " € " + "</td><td>Verlustzone</td></tr>";
+                }
+                else {
+                vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + vY.toFixed(2) + " € " + "</td><td>" + vE.toFixed(2) + " € " + "</td><td>" + vG.toFixed(2) + " € " + "</td><td>Gewinnzone</td></tr>";
+
+
+                }
+			vX = vX + 1000;
+}
+			vAusgabe = vAusgabe + "</table>";
+
+			document.getElementById("divAusgabe").innerHTML = vAusgabe;
+		}
+
+		</script></head>
+
+
+
+
+	<body>
+		<h1>Gewinn- und Erlösfunktion</h1>
+	Kosten-Variabel(k): <input id="idKV" value="4.50" size="6">
+		Kosten-Fix: <input id="idKF" value="12800" size="6"><br/><br/>
+		Produktionsmengen(x): <input id="idAnzahl" value="20000" size="6">
+		Stückpreis(p): <input id="idPreis" value="6.00" size="6"><br/>
+		<button onclick="programm();">Kostentabelle!</button><br><br>
+        <div id="divAusgabe"></div>
+
+
+</body></html>
